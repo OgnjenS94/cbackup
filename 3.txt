@@ -1,0 +1,450 @@
+##CONFIG##
+
+Building configuration...
+
+Current configuration : 10583 bytes
+!
+version 12.2
+no service pad
+service timestamps debug uptime
+service timestamps log datetime msec
+service password-encryption
+!
+hostname ibis-corp
+!
+boot-start-marker
+boot-end-marker
+!
+logging console notifications
+enable password 7 020700560208
+!
+username admin privilege 15 password 7 0005170B0D55
+no aaa new-model
+clock timezone CET 1
+clock summer-time CET recurring last Sun Mar 2:00 last Sun Oct 2:00
+system mtu routing 1500
+ip subnet-zero
+!
+!
+ip domain-name ibis
+login on-failure log
+login on-success log
+!
+!
+crypto pki trustpoint TP-self-signed-2188996736
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2188996736
+ revocation-check none
+ rsakeypair TP-self-signed-2188996736
+!
+!
+crypto pki certificate chain TP-self-signed-2188996736
+ certificate self-signed 01
+  30820246 308201AF A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32313838 39393637 3336301E 170D3933 30333031 30303030 
+  35355A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 31383839 
+  39363733 3630819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100ACAD 763F8FC4 864760D1 84996321 D07232C8 3205BEE9 B6A0EBEB 4E2EB5FA 
+  52F67892 DE5F5950 F2490F36 ABF688B4 E5651DB1 27250187 F40275FC DD5E201D 
+  86264378 74774F94 7394B73F 0A6F6FAF 1F66C626 DA075612 A4559FA8 DD508CDB 
+  B6E2A9F6 BB037B56 877513A8 B6D5E82A FC8DD7CE 1751C7F1 339DC5C3 42F7229B 
+  34630203 010001A3 6E306C30 0F060355 1D130101 FF040530 030101FF 30190603 
+  551D1104 12301082 0E696269 732D636F 72702E69 62697330 1F060355 1D230418 
+  30168014 71D213C5 1953ED28 F63C7F9B 33F5633D B065F6F8 301D0603 551D0E04 
+  16041471 D213C519 53ED28F6 3C7F9B33 F5633DB0 65F6F830 0D06092A 864886F7 
+  0D010104 05000381 81002319 4AC3DAE6 1FFFC301 EFDA7C93 ED9DC5E4 23071933 
+  3BB4A093 117200D6 7DA1C1FE 2A460558 849054B8 3B7504C6 220072B1 43A7742E 
+  5EAD8608 795B1DB5 3110EEFA 70A43F75 0FB4AD8E 6E79F197 4F65F1AD CFFE1B0E 
+  C9011CEB C24DE756 5E5B1717 B77A254B F5D5D5A9 56E1F800 28E50009 E8334FA6 
+  FDE65362 BEBB77DC E4AA
+  quit
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+interface FastEthernet0/1
+ description Menadzment-CP-GW-1
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/3
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/4
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/5
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/7
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/8
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/9
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/10
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/11
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/12
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/13
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/14
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/15
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/16
+ description Nikola Stevanovic DATA
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/17
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+!
+interface FastEthernet0/18
+ description ibis-corp
+ switchport trunk native vlan 100
+ switchport mode trunk
+ load-interval 30
+!
+interface FastEthernet0/19
+ description ibis-corp
+ switchport trunk native vlan 100
+ switchport mode trunk
+ load-interval 30
+!
+interface FastEthernet0/20
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+ spanning-tree portfast
+!
+interface FastEthernet0/21
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/22
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+!
+interface FastEthernet0/23
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/24
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/25
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/26
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/27
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/28
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/29
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/30
+ description ibis-corp
+ switchport mode trunk
+ load-interval 30
+!
+interface FastEthernet0/31
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/32
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/33
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/34
+ description Milorad Saric DATA
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/35
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/36
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/37
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/38
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/39
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/40
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/41
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/42
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/43
+ switchport access vlan 105
+ switchport mode access
+!
+interface FastEthernet0/44
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/45
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/46
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/47
+ description ibis-corp
+ switchport access vlan 100
+ switchport mode access
+ load-interval 30
+!
+interface FastEthernet0/48
+ description ibis-corp
+ switchport access vlan 105
+ switchport mode access
+ load-interval 30
+!
+interface GigabitEthernet0/1
+ description UPLINK - REMOTESW1
+ switchport trunk allowed vlan 100,111,150,500,600
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description LINK ibis-core
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+!
+interface Vlan10
+ no ip address
+ no ip route-cache
+!
+interface Vlan15
+ ip address 192.168.15.12 255.255.255.0
+ no ip route-cache
+!
+interface Vlan110
+ ip address 192.168.110.221 255.255.255.0
+ no ip route-cache
+!
+interface Vlan150
+ no ip address
+ no ip route-cache
+!
+ip default-gateway 192.168.15.1
+no ip http server
+ip http secure-server
+logging facility syslog
+logging source-interface Vlan15
+logging 192.168.0.19
+logging 192.168.0.26
+logging 192.168.150.246
+logging 192.168.0.74
+logging 192.168.0.147
+snmp-server group snmpv2 v2c read snmpv2 
+snmp-server group ibissnmpv3-read v3 priv read snmpv3-view 
+snmp-server view snmpv3-view iso included
+snmp-server community public RO
+snmp-server community private RW
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps transceiver all
+snmp-server enable traps tty
+snmp-server enable traps cluster
+snmp-server enable traps entity
+snmp-server enable traps cpu threshold
+snmp-server enable traps rep
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps port-security
+snmp-server enable traps auth-framework sec-violation
+snmp-server enable traps dot1x auth-fail-vlan guest-vlan no-auth-fail-vlan no-guest-vlan
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps power-ethernet group 1
+snmp-server enable traps power-ethernet police
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps config-ctid
+snmp-server enable traps energywise
+snmp-server enable traps rtr
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps mac-notification change move threshold
+snmp-server enable traps vlan-membership
+snmp-server enable traps errdisable
+snmp-server host 192.168.0.147 public 
+snmp-server host 192.168.0.74 public 
+!
+control-plane
+!
+banner login ^C
+****************
+*  IBIS-CORP   *
+****************^C
+!
+line con 0
+line vty 0 4
+ login local
+ transport input all
+line vty 5 15
+ login local
+!
+end
+
+##ENDOF_CONFIG##
+
